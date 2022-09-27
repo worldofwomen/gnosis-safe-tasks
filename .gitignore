@@ -1,6 +1,5 @@
 build/
 node_modules/
-contracts/
 .DS_Store
 .zos.session
 .openzeppelin/.session
