@@ -17,7 +17,7 @@ dotenv.config();
 const {
   NETWORK,
   NODE_URL,
-  INFURA_KEY,
+  ALCHEMY_KEY,
   MNEMONIC,
   PK,
   SOLIDITY_VERSION,
@@ -38,7 +38,7 @@ if (PK) {
 
 if (
   ["mainnet", "rinkeby", "kovan", "goerli"].includes(argv.network) &&
-  INFURA_KEY === undefined
+  ALCHEMY_KEY === undefined
 ) {
   throw new Error(
     `Could not find Infura key in env, unable to connect to network ${argv.network}`
@@ -74,35 +74,11 @@ const userConfig: HardhatUserConfig = {
     },
     mainnet: {
       ...sharedNetworkConfig,
-      url: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
-    },
-    xdai: {
-      ...sharedNetworkConfig,
-      url: "https://xdai.poanetwork.dev",
-    },
-    ewc: {
-      ...sharedNetworkConfig,
-      url: `https://rpc.energyweb.org`,
-    },
-    rinkeby: {
-      ...sharedNetworkConfig,
-      url: `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
+      url: `https://mainnet.infura.io/v3/${ALCHEMY_KEY}`,
     },
     goerli: {
       ...sharedNetworkConfig,
-      url: `https://goerli.infura.io/v3/${INFURA_KEY}`,
-    },
-    kovan: {
-      ...sharedNetworkConfig,
-      url: `https://kovan.infura.io/v3/${INFURA_KEY}`,
-    },
-    volta: {
-      ...sharedNetworkConfig,
-      url: `https://volta-rpc.energyweb.org`,
-    },
-    bsc: {
-      ...sharedNetworkConfig,
-      url: `https://bsc-dataseed.binance.org/`,
+      url: `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_KEY}`,
     },
   },
   namedAccounts: {
