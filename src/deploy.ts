@@ -187,6 +187,32 @@ task("transfer", "Transfer ownership")
     console.log(txReceipt);
   });
 
+task("mint", "Transfer ownership")
+  .addPositionalParam(
+    "contractAddress",
+    "Address of the wow contract",
+    undefined,
+    types.string
+  )
+  .addParam("signerIndex", "Index of the signer to use", 0, types.int, true)
+  .setAction(async (taskArgs, hre) => {
+    const signers = await hre.ethers.getSigners();
+    const signer = signers[taskArgs.signerIndex];
+    console.log(`Using Safe at ${taskArgs.safeAddress} with ${signer.address}`);
+
+    const wowFactory = await hre.ethers.getContractFactory(
+      "WorldOfWomen",
+      signer
+    );
+    const wowContract = wowFactory.attach(taskArgs.contractAddress);
+
+    const txResponse = await wowContract.mint(1, {
+      value: ethers.utils.parseUnits("0.0001", "ether"),
+    });
+    const txReceipt = await txResponse.wait();
+    console.log(txReceipt);
+  });
+
 task("owner", "Check WoW owner")
   .addPositionalParam(
     "contractAddress",
