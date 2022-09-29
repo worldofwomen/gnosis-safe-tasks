@@ -5,6 +5,16 @@ import { logGas } from "@gnosis.pm/safe-contracts/dist/utils/execution";
 // @ts-ignore
 import solc from "solc";
 
+export const WorldOfWomenDeployment = async () => {
+  return await deployments.get("WorldOfWomen");
+};
+
+export const WorldOfWomenContract = async () => {
+  return (await hre.ethers.getContractFactory("WorldOfWomen")).attach(
+    (await WorldOfWomenDeployment()).address
+  );
+};
+
 export const defaultCallbackHandlerDeployment = async () => {
   return await deployments.get("DefaultCallbackHandler");
 };
