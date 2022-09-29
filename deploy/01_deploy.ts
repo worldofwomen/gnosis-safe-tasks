@@ -26,7 +26,7 @@ module.exports = async (hre: HardhatRuntimeEnvironment) => {
   }
 
   const wowTx = await deploy("WorldOfWomen", {
-    args: [],
+    args: [deployer],
     from: deployer,
     log: true,
   });
