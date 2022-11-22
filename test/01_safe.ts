@@ -23,7 +23,7 @@ import {
 // We have to use the following lines/import for TS to get the waffle assumptions.
 chai.use(solidity);
 
-describe("Test WoWDrips contract", async () => {
+describe("Test WoW contract", async () => {
   let deployer: Signer, admin: Signer, user1: Signer, user2: Signer;
   let safe: Contract;
   let ownerSafe: Contract;

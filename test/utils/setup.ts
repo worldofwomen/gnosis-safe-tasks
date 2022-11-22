@@ -15,6 +15,16 @@ export const WorldOfWomenContract = async () => {
   );
 };
 
+export const CanaryDeployment = async () => {
+  return await deployments.get("Canary");
+};
+
+export const CanaryContract = async () => {
+  return (await hre.ethers.getContractFactory("Canary")).attach(
+    (await CanaryDeployment()).address
+  );
+};
+
 export const defaultCallbackHandlerDeployment = async () => {
   return await deployments.get("DefaultCallbackHandler");
 };
