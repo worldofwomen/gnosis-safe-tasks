@@ -41,7 +41,7 @@ if (
   ALCHEMY_KEY === undefined
 ) {
   throw new Error(
-    `Could not find Infura key in env, unable to connect to network ${argv.network}`
+    `Could not find Alchemy key in env, unable to connect to network ${argv.network}`
   );
 }
 
@@ -72,10 +72,10 @@ const userConfig: HardhatUserConfig = {
       blockGasLimit: 100000000,
       gas: 100000000,
     },
-    mainnet: {
-      ...sharedNetworkConfig,
-      url: `https://mainnet.infura.io/v3/${ALCHEMY_KEY}`,
-    },
+    // mainnet: {
+    //   ...sharedNetworkConfig,
+    //   url: `https://mainnet.infura.io/v3/${ALCHEMY_KEY}`,
+    // },
     goerli: {
       ...sharedNetworkConfig,
       url: `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_KEY}`,
